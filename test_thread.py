@@ -19,10 +19,14 @@ class testThread(threading.Thread):
     def run(self):
         start_time = timeit.default_timer()
         #open file for reading
-        f = open(str(self.file),'r')
+        #f = open(str(self.file),'r')
         #read the file and print to the command line
-        for line in f:
-            print(self.name + ':' + line)
+        #for line in f:
+        #    print(self.name + ':' + line)
+        l = [1,2,3,4,5,6,7,8,9,10]
+        for e in l:
+            print(self.name + ':' + str(e))
+        
         elapsed_time = timeit.default_timer() - start_time
         print(self.name + ':' + str(elapsed_time))
         return
