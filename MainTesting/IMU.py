@@ -288,7 +288,7 @@ def collect_data(n):
         if AccYangle > 90:
             AccYangle -= 270.0
         else:
-            Yangle += 90.0
+            AccYangle += 90.0
         #IMU is upside down E.g Skull logo is facing up;
         #if AccXangle >180:
         #    AccXangle -= 360.0
