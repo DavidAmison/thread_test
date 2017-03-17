@@ -9,6 +9,6 @@ import IMU
 import timeit
 
 start = timeit.default_timer()
-IMU.collect_date(10)
+IMU.collect_data(10)
 length = timeit.default_timer() - start
 print('collecting data took:',length,'s')
