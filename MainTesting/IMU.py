@@ -30,6 +30,7 @@
 
 import smbus
 import time
+import timeit
 import math
 from LSM9DS0 import *
 import datetime
@@ -242,7 +243,8 @@ def collect_data(n):
     a = datetime.datetime.now()
 
     for i in range(0,n):    	
-    	#Read the accelerometer,gyroscope and magnetometer values
+        st = timeit.default_timer()
+        #Read the accelerometer,gyroscope and magnetometer values
         ACCx = readACCx()
         ACCy = readACCy()
         ACCz = readACCz()
@@ -257,7 +259,7 @@ def collect_data(n):
         b = datetime.datetime.now() - a
         a = datetime.datetime.now()
         LP = b.microseconds/(1000000*1.0)
-        print("Loop Time | %5.2f|" % ( LP ))
+        #print("Loop Time | %5.2f|" % ( LP ))
     	
     	
         #Convert Gyro raw to degrees per second
@@ -354,7 +356,7 @@ def collect_data(n):
             tiltCompensatedHeading += 360
     
     
-    
+        '''
         if 1:			#Change to '0' to stop showing the angles from the accelerometer
             print ("\033[1;34;40mACCX Angle %5.2f ACCY Angle %5.2f  \033[0m  " % (AccXangle, AccYangle)),
     	
@@ -369,7 +371,9 @@ def collect_data(n):
     		
         if 1:			#Change to '0' to stop  showing the angles from the Kalman filter
             print ("\033[1;31;40m kalmanX %5.2f  \033[1;35;40m kalmanY %5.2f  " % (kalmanX,kalmanY))
+        '''
     
     	
         #slow program down a bit, makes the output more readable
-        time.sleep(0.5)
+        while timeit.default_timer() - st < 0.02:
+            pass
